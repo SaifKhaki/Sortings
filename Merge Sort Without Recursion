@@ -1,0 +1,90 @@
+#include <iostream> 
+#include <vector> 
+#include <cstdlib> 
+#include <ctime> 
+#include <algorithm>
+#include <time.h>
+using namespace std;
+void sort(int *arr1, int *arr2, int *arr3, int kth);
+void printArr(int *dockArr, int size);
+void bubbleSort(int *second);
+int main()
+{
+	srand((unsigned)time(0));
+
+
+	int arr1[10] = {};
+	int arr2[10] = {};
+	int sizeArr1 = sizeof(arr1) / sizeof(arr1[0]);
+	int sizeArr2 = sizeof(arr2) / sizeof(arr2[0]);
+	int arr3[20] = {};
+	for (int i = 0; i < sizeArr1; i++){
+		int randNum = (rand() % 100) + 1;
+		arr1[i] = randNum;
+		randNum = (rand() % 100) + 1;
+		arr2[i] = randNum;
+	}
+	bubbleSort(arr1);
+	bubbleSort(arr2);
+	printArr(arr1, 10);
+	cout << endl;
+	printArr(arr2, 10);
+	cout << endl;
+	int indexofThird = 0;
+	sort(arr1, arr2, arr3, indexofThird);
+
+
+	getchar();
+	getchar();
+	getchar();
+	getchar();
+	getchar();
+	getchar();
+	return 0;
+}
+
+void sort(int *arr1, int *arr2, int *arr3, int kth){
+	int smaller;
+	int ith = 0;
+	int jth = 0;
+	for (int i = 0; i < 20; i++){
+		if (arr1[ith] > arr2[jth]){
+			smaller = arr2[jth];
+			if (jth < 9)
+				jth++;
+			else
+				arr2[jth] = 100;
+		}
+		else{
+			smaller = arr1[ith];
+			if (ith < 9)
+				ith++;
+			else
+				arr1[9] = 100;
+		}
+
+	arr3[kth] = smaller;
+	kth++;
+	//sort(arr1, arr2, arr3);	
+	}
+
+	
+
+	printArr(arr3, 20);
+
+}
+void printArr(int *dockArr,int size){
+	
+	for (int i = 0; i < size; i++){
+		cout << "The element of array at position " << i << " is " << dockArr[i] << endl;
+	}
+}
+void bubbleSort(int *second){
+	for (auto i = 0; i < 10; i++){
+		for (auto j = 0; j < 9 - i; j++){
+			if (second[j]>second[j + 1]){
+				swap(second[j], second[j + 1]);
+			}
+		}
+	}
+}
