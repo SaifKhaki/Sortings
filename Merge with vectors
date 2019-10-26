@@ -1,0 +1,104 @@
+#include <iostream> 
+#include <vector> 
+#include <cstdlib> 
+#include <ctime> 
+#include <algorithm>
+#include <time.h>
+using namespace std;
+void merge(vector<int> arr1, vector<int> arr2);
+void printArr(vector<int> dockArr, int size);
+
+int main()
+{
+	srand((unsigned)time(0));
+
+	vector<int> arr1;
+	vector<int> arr2;
+	
+	
+	
+	
+	for (int i = 0; i < 10; i++){
+		int randNum = (rand() % 100) + 1;
+		arr1.push_back(randNum);
+		randNum = (rand() % 100) + 1;
+		arr2.push_back(randNum);
+	}
+	int sizeArr1 = arr1.size();
+	int sizeArr2 = arr2.size();
+	sort(arr1.begin(),arr1.end());
+	sort(arr2.begin(), arr2.end());
+	printArr(arr1, sizeArr1);
+	cout << endl;
+	printArr(arr2, sizeArr2);
+	cout << endl;
+	merge(arr1, arr2);
+	getchar();
+	getchar();
+	getchar();
+	getchar();
+	getchar();
+	getchar();
+	return 0;
+}
+int ith = 0;
+int jth = 0;
+int kth = 0;
+int smaller;
+
+
+void merge(vector<int> arr1, vector<int> arr2){
+	vector<int> arr3;
+	for (int i = 0; i < (arr1.size()+arr2.size()); i++){
+		if (arr1[ith] > arr2[jth]){
+			smaller = arr2[jth];
+			if (jth < arr1.size()-1)
+				jth++;
+			else
+				break;
+		}
+		else{
+			smaller = arr1[ith];
+			if (ith < arr1.size() - 1)
+				ith++;
+			else
+				break;
+		}
+
+	arr3.push_back(smaller);
+	kth++;
+	//sort(arr1, arr2, arr3);	
+	}
+	arr3.push_back(smaller);
+	kth++;
+	
+	if (ith == arr1.size() - 1)
+	{
+		while (jth <= arr2.size() - 1)
+		{
+			arr3.push_back(arr2[jth]);
+			kth++;
+			jth++;
+		}
+	}
+	else if (jth == arr2.size() - 1)
+	{
+		while (ith <= arr1.size() - 1)
+		{
+			arr3.push_back(arr1[ith]);
+			kth++;
+			ith++;
+		}
+	}
+	
+	arr1.swap(arr3);
+	printArr(arr1, arr1.size());
+
+}
+
+void printArr(vector<int> dockArr,int size){
+	
+	for (int i = 0; i < size; i++){
+		cout << "The element of array at position " << i << " is " << dockArr[i] << endl;
+	}
+}
