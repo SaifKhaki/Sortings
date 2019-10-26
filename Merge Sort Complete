@@ -1,0 +1,108 @@
+#include <iostream> 
+#include <vector> 
+#include <cstdlib> 
+#include <ctime> 
+#include <algorithm>
+#include <time.h>
+using namespace std;
+void merge(vector<int> &arr1, int s, int m, int e);
+void printArr(vector<int> &dockArr, int size);
+void mergeSort(vector<int> &arr, int a, int b);
+vector<int> vect1;
+int main()
+{
+	srand((unsigned)time(0));
+	for (int i = 0; i < 10; i++)
+	{
+		int randNum = (rand() % 100) + 1;
+		vect1.push_back(randNum);
+	}
+	int sizeArr1 = vect1.size();
+	printArr(vect1, sizeArr1);
+	cout << endl;
+	mergeSort(vect1, 0, sizeArr1 - 1);
+	cout << endl;
+	cout << "After merge sort:" << endl;
+	printArr(vect1, sizeArr1);
+	
+
+	getchar();
+	getchar();
+	getchar();
+	getchar();
+	getchar();
+	getchar();
+	return 0;
+}
+
+void mergeSort(vector<int> &arr, int start, int end){
+
+	if (start < end)
+	{
+		int m = (start + end) / 2;
+		mergeSort(arr, start, m);
+		mergeSort(arr, m + 1, end);
+		merge(arr, start, m, end);
+	}
+	return;
+}
+
+
+void merge(vector<int> &arr1, int s, int m, int e){
+
+	vector<int> vect3;
+	vector<int> vect4;
+
+	for (int i = 0; i <= m-s; i++)
+	{
+		vect3.push_back(arr1[s+i]);
+	}
+	
+	for (int i = 0; i < e-m; i++)
+	{
+		vect4.push_back(arr1[m + i+1]);
+	}
+	
+	int ith = 0;
+	int jth = 0;
+	int i;
+	int insertAt = s;
+	for (i = 0; i < e - s + 1; i++)
+	{
+		if (ith < (m - s + 1) && jth < (e - m)){
+			if (vect3[ith] < vect4[jth])
+			{
+				arr1[insertAt] = vect3[ith];
+				insertAt++;
+				ith++;
+			}
+			else
+			{
+				arr1[insertAt] = vect4[jth];
+				insertAt++;
+				jth++;
+			}
+		}
+		else	
+			break;
+	
+	}
+
+	for (; ith < m - s + 1; ith++){
+		arr1[insertAt] = vect3[ith];
+		insertAt++;
+	}
+		
+	for (; jth < e - m; jth++){
+		arr1[insertAt] = vect4[jth];
+		insertAt++;
+	}
+}
+
+void printArr(vector<int> &dockArr, int size){
+	cout << "Requested vector is:" << endl;
+	for (int i = 0; i < size; i++){
+		cout << dockArr[i] << " ";
+	}
+}
+
