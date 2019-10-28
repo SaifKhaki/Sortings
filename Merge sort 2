@@ -11,15 +11,17 @@ vector<int> mergeSort(int a, int b);
 vector<int> vect1;
 int main()
 {
+	//using srand to make random numbers
 	srand((unsigned)time(0));
 
 	
-		
+	//initializing the vector named vect1 with random numbers	
 	for (int i = 0; i < 10; i++){
 		int randNum = (rand() % 100) + 1;
 		vect1.push_back(9-i);
 	}
 	int sizeArr1 = vect1.size();
+	//printing current state of vect1
 	printArr(vect1, sizeArr1);
 	cout << endl;
 	//*****************************************************************************************************8
