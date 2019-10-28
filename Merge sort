@@ -12,8 +12,13 @@ vector<int> mergeSort(int a, int b);
 vector<int> vect1;
 int main()
 {
+	//similarly adding comments here
 	srand((unsigned)time(0));
 
+//similarly adding comments here
+//similarly adding comments here
+//similarly adding comments here
+//similarly adding comments here
 	
 		
 	for (int i = 0; i < 10; i++){
@@ -35,7 +40,7 @@ int main()
 }
 
 vector<int> mergeSort(int a, int b){
-	
+	//This is the merge sort algorithm
 	vector<int> dock;
 	do {
 		dock.push_back(vect1[a]);
