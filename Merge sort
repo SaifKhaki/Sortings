@@ -5,6 +5,7 @@
 #include <algorithm>
 #include <time.h>
 using namespace std;
+//here is the declaration of all the methods we are gonna use
 void merge(vector<int> arr1, vector<int> arr2);
 void printArr(vector<int> dockArr, int size);
 vector<int> mergeSort(int a, int b);
